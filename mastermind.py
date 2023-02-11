@@ -19,5 +19,5 @@ else:
     guess_colors = set(guess)
     code_colors = set(code)
     correct_colors = guess_colors & code_colors - correct_position
-    print(f'You have {len(correct_position)} in the right place,)
+    print(f'You have {len(correct_position)} in the right place,')
     print(f'and {len(corect_colors)} others that are the right colors.')
