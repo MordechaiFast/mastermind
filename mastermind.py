@@ -9,16 +9,15 @@
 
 code = '1234'
 guess = input('Make your guess: ')
-if guess == code:
-    print('right')
+#sets might only work for easy level...
+correct_position = {
+    guess_diget
+    for guess_diget, code_diget in zip(guess, code)
+    if guess_diget == code_diget
+}
+correct_colors = set(guess) & set(code) - correct_position
+if len(correct_position) == 4:
+    print('Right')
 else:
-    correct_position = {
-        guess_diget
-        for guess_diget, code_diget in zip(guess, code)
-        if guess_diget == code_diget
-    }
-    guess_colors = set(guess)
-    code_colors = set(code)
-    correct_colors = guess_colors & code_colors - correct_position
     print(f'You have {len(correct_position)} in the right place,')
     print(f'and {len(correct_colors)} others that are the right colors.')
