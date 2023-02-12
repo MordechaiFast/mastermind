@@ -7,8 +7,16 @@
 # and how many are a color that is present but not in the correct position.
 '''
 
+import random
+
+
 num_of_guesses = 8
-code = '1234'
+code = []
+for _ in range(4):
+    # if level == 'easy':
+    while diget := random.randint(1, 6) in code:
+        pass
+    code.append(diget)
 for guess_num in range(1, num_of_guesses + 1):
     guess = input(f'Guess #{guess_num}: ')
     #sets might only work for easy level...
