@@ -10,19 +10,18 @@
 from random import randint
 
 
-level = 0
-num_of_guesses = 8
-#code = '1234'
-if level != 0:
-    code = [randint(0 if level == 2 else 1, 6) for _ in '----']
-else:
-    code = []
-    for _ in '----':
-        while (digit := randint(1, 6)) in code:
-            pass
-        code.append(digit)
-for guess_num in range(1, num_of_guesses + 1):
-    guess = input(f'Guess #{guess_num}: ')
+def produce_code(level = 0) -> list:
+    if level != 0:
+        code = [randint(0 if level == 2 else 1, 6) for _ in '----']
+    else:
+        code = []
+        for _ in '----':
+            while (digit := randint(1, 6)) in code:
+                pass
+            code.append(digit)
+    return code
+
+def score_guess(guess, code):
     correct_digits, missplaced_digits = 0, 0
     incorrect_guess_digits, unguessed_code_digits = [], []
     for guess_digit, code_digit in zip(guess, code):
@@ -37,6 +36,13 @@ for guess_num in range(1, num_of_guesses + 1):
                 missplaced_digits += 1
                 del code_digit
                 break
+    return correct_digits, missplaced_digits
+
+num_of_guesses = 8
+code = produce_code()
+for guess_num in range(1, num_of_guesses + 1):
+    guess = input(f'Guess #{guess_num}: ')
+    correct_digits, missplaced_digits = score_guess(guess, code)
     print('*' * correct_digits + '-' * missplaced_digits)
     if correct_digits == 4:
         break
