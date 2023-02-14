@@ -17,27 +17,27 @@ if level != 0:
 else:
     code = []
     for _ in '----':
-        while (diget := randint(1, 6)) in code:
+        while (digit := randint(1, 6)) in code:
             pass
-        code.append(diget)
+        code.append(digit)
 for guess_num in range(1, num_of_guesses + 1):
     guess = input(f'Guess #{guess_num}: ')
-    correct_digets, missplaced_digets = 0, 0
-    incorrect_guess_digets, unguessed_code_digets = [], []
-    for guess_diget, code_diget in zip(guess, code):
-        if guess_diget == code_diget:
-            correct_digets += 1
+    correct_digits, missplaced_digits = 0, 0
+    incorrect_guess_digits, unguessed_code_digits = [], []
+    for guess_digit, code_digit in zip(guess, code):
+        if guess_digit == code_digit:
+            correct_digits += 1
         else:
-            incorrect_guess_digets.append(guess_diget)
-            unguessed_code_digets.append(code_diget)
-    for guess_diget in incorrect_guess_digets:
-        for code_diget in unguessed_code_digets:
-            if guess_diget == code_diget:
-                missplaced_digets += 1
-                del code_diget
+            incorrect_guess_digits.append(guess_digit)
+            unguessed_code_digits.append(code_digit)
+    for guess_digit in incorrect_guess_digits:
+        for code_digit in unguessed_code_digits:
+            if guess_digit == code_digit:
+                missplaced_digits += 1
+                del code_digit
                 break
-    print('*' * correct_digets + '-' * missplaced_digets)
-    if correct_digets == 4:
+    print('*' * correct_digits + '-' * missplaced_digits)
+    if correct_digits == 4:
         break
-if [diget for diget in guess] != code:
-    print(diget for diget in code)
+if [digit for digit in guess] != code:
+    print(digit for digit in code, sep='')
