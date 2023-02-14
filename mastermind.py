@@ -46,12 +46,16 @@ def score_guess(guess, code):
     return correct_digits, missplaced_digits
 
 num_of_guesses = 8
-code = produce_code()
-for guess_num in range(1, num_of_guesses + 1):
-    guess = input(f'Guess #{guess_num}: ')
-    correct_digits, missplaced_digits = score_guess(guess, code)
-    print('*' * correct_digits + '-' * missplaced_digits)
-    if correct_digits == 4:
-        break
-if correct_digits != 4:
+
+def main():
+    code = produce_code()
+    for guess_num in range(1, num_of_guesses + 1):
+        guess = input(f'Guess #{guess_num}: ')
+        correct, missplaced = score_guess(guess, code)
+        print('*' * correct + '-' * missplaced)
+        if correct == 4:
+            return
     print(code[0], code[1], code[2], code[3], sep='')
+
+if __name__ == '--main__':
+    main()
