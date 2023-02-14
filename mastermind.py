@@ -11,6 +11,8 @@ from random import randint
 
 
 def produce_code(level = 0) -> list:
+    '''Generates a random four diget code, according to the Mastemind rules'''
+    
     if level != 0:
         code = [randint(0 if level == 2 else 1, 6) for _ in '----']
     else:
@@ -22,6 +24,11 @@ def produce_code(level = 0) -> list:
     return code
 
 def score_guess(guess, code):
+    '''Scores a guess against a given code.
+    Allows the guess or the code to be given as a string or list of ints.
+    Returns the number of places that are correct, and the number of places
+    that are present but not correct'''
+
     correct_digits, missplaced_digits = 0, 0
     incorrect_guess_digits, unguessed_code_digits = [], []
     for guess_digit, code_digit in zip(guess, code):
