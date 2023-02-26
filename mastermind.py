@@ -11,7 +11,18 @@ from random import randint
 
 
 def produce_code(level = 0) -> list:
-    '''Generates a random four diget code, according to the Mastemind rules'''
+    '''Generates a random four diget code, according to the Mastemind rules
+    
+    >>> import random
+    >>> random.seed(0)
+    >>> produce_code()
+    [4, 1, 3, 5]
+    >>> produce_code(level=1)
+    [4, 4, 3, 4]
+    >>> random.seed(2)
+    >>> produce_code(level=2)
+    [6, 6, 0, 0]
+    '''
     
     if level != 0:
         code = [randint(0 if level == 2 else 1, 6) for _ in '----']
@@ -57,5 +68,5 @@ def main():
             return
     print(code[0], code[1], code[2], code[3], sep='')
 
-if __name__ == '--main__':
+if __name__ == '__main__':
     main()
