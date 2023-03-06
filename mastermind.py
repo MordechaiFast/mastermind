@@ -67,7 +67,7 @@ def main():
         print('*' * correct + '-' * missplaced)
         # Check for a win
         if correct == 4:
-            return
+            break
     # End game: reveal the code
     print(code[0], code[1], code[2], code[3], sep='')
 
